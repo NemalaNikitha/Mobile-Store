@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="MOBILE STORE">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MOBILE STORE</title>
+    <link href="css/bootstrap.min.css"rel="stylesheet">
+</head>
+<body class="container">
+<div class="row">
+    <div class="col-md-12">
+<h2 class="page-header">Mobile Store</h2>
+<div ng-controller="StoreController as store" class="row">
+    <div ng-repeat="mobile in store.mobiles track by $index" class="col-md-4">
+        <img ng-src="{{mobile.images}}"width="300px" height="400px">
+        <p>Name: {{mobile.name}}</p>
+        <p>Color:{{mobile.color}}</p>
+        <p>Memory:{{mobile.memory}}</p>
+        <p>Price:&#8377;  {{mobile.price}}</p>
+        <button type="button" ng-hide="{{mobile.isSoldOut}}" class="btn btn-warning">BUY NOW</button>
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{'active':mobile.activeTab=='Description'}"><a  ng-click="store.setActiveTab(mobile,'Discription')">Description</a></li>
+            <li role="presentation"ng-class="{'active':mobile.activeTab=='Specification'}"><a  ng-click="store.setActiveTab(mobile,'Specification')">Specification</a></li>
+            <li role="presentation"ng-class="{'active':mobile.activeTab=='Reviews'}"><a ng-click="store.setActiveTab(mobile,'Review')">Reviews</a></li>
+        </ul>
+        <p ng-show="mobile.activeTab=='Discription'">
+            Description
+        </p>
+        <p ng-show="mobile.activeTab=='Specification'">
+            Specification
+        </p>
+        <p ng-show="mobile.activeTab=='Review'">
+        Review
+        </p>
+    </div>
+    </div>
+</div>
+    </div>
+</div>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
